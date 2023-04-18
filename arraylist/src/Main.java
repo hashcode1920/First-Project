@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("<---------------First list starts from here--------------->");
         ArrayList<String> list=new ArrayList<String>();
         list.add("First");
         list.add("Second");
@@ -10,7 +11,8 @@ public class Main {
         for(int i=0; i<list.size(); i++) {
             System.out.println("The First List is  :  " + list.get(i));
         }
-        
+
+        System.out.println("<---------------Second list starts from here--------------->");
         ArrayList<String> list2=new ArrayList<String>();
         list2.add("First");
         list2.add("Second");
