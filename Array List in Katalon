@@ -1,0 +1,57 @@
+public class getTextTailName {
+	@Keyword
+	public static void main(TestObject tailName) {
+		WebDriver driver = DriverFactory.getWebDriver();
+		WebElement listName = driver.findElement(By.xpath('//div[@class="ReactVirtualized__Grid__innerScrollContainer"]'))
+		List<WebElement> allTailNameList = listName.findElements(By.tagName('div'))
+		println("\n<------First list starts form here------>")
+		println('Total number of Tail Names in a list is = ' + allTailNameList.size())
+		List<String> firstTailList = new ArrayList<String>();
+		for(int i=0; i<allTailNameList.size(); i++) {
+			println("Aircraft Tail List   :   " + allTailNameList[i].text)
+			firstTailList.add(allTailNameList[i].text)
+		}
+
+		//		println("Total Aircraft Size   :   " + firstTailList.size())
+
+
+//		WebUI.click(findTestObject('Object Repository/TailListObjects/click_CloseAircraft'))
+//		WebUI.click(findTestObject('Object Repository/TailListObjects/click_Fleet'))
+		WebUI.click(findTestObject('Object Repository/TailListObjects/click_Analytics'))
+		String getAircraftList = WebUI.getText(findTestObject('Object Repository/TailListObjects/getTxt_SecondTailList'))
+		WebElement secondList = driver.findElement(By.xpath('(//div[@class="scuf-col col-12"])[1]'))
+		List<WebElement> allSecondTailNameList = listName.findElements(By.xpath('(//div[@class="scuf-col col-12"])[1]'))
+		println("\n<------Second list starts form here------>")
+		List<String> secondTailList = new ArrayList<String>(Arrays.asList(getAircraftList.split(", ")));
+		for(String secondTail : secondTailList) {
+			println("Second Aircraft List   :   " + secondTail)
+		}
+		println('Second Aircraft List Size is   :   ' + secondTailList.size())
+
+		ArrayList<String> list3 = new ArrayList<String>();
+		for(int i=0; i<secondTailList.size(); i++) {
+			for(int j=0; j<firstTailList.size(); j++) {
+				if(secondTailList.contains(firstTailList.get(j))==true) {
+					if(secondTailList.get(i)==firstTailList.get(j)) {
+						list3.add(secondTailList.get(j));
+					}
+				}
+			}
+		}
+		println('First List   :  ' + firstTailList)
+		println('Second List  :  ' + secondTailList)
+		println('Third List   :  ' + list3)
+		println('First List   :  ' + firstTailList.size())
+		println('Second List  :  ' + secondTailList.size())
+		println('Third List   :  ' + list3.size())
+		if (firstTailList.equals(list3)) {
+			KeywordUtil.markPassed("Matched");
+		}
+		else {
+			KeywordUtil.markFailed("Not Matched");
+		}
+	}
+}
+
+//div[@class="ReactVirtualized__Grid__innerScrollContainer"]
+//div[@class="ReactVirtualized__Grid ReactVirtualized__List"]
