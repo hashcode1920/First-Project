@@ -2,18 +2,25 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-
         ArrayList<String> list=new ArrayList<String>();
         list.add("First");
-        list.add("name");
-        list.add("is");
-        list.add("Jay");
-
+        list.add("Second");
+        list.add("Third");
+        list.add("Forth");
+        for(int i=0; i<list.size(); i++) {
+            System.out.println("The First List is  :  " + list.get(i));
+        }
+        
         ArrayList<String> list2=new ArrayList<String>();
         list2.add("First");
-        list2.add("name");
-        list2.add("is");
-        list2.add("Jay");
+        list2.add("Second");
+        list2.add("Third");
+        list2.add("Forth");
+        list2.add("Fifth");
+        list2.add("Sixth");
+        for(int j=0; j<list2.size(); j++) {
+            System.out.println("The Second List is  :  " + list2.get(j));
+        }
 
         ArrayList<String> list3=new ArrayList<String>();
         for(int i=0;i<list2.size();i++) {
@@ -28,6 +35,12 @@ public class Main {
                 }
             }
         }
+        System.out.println("First list     :  " + list);
+        System.out.println("Second list    :  " + list2);
+        System.out.println("Third list is  :  " + list3);
+        System.out.println("First list     :  " + list.size());
+        System.out.println("Second list    :  " + list2.size());
+        System.out.println("Third list is  :  " + list3.size());
 
         if(list.equals(list3)) {
             System.out.println("Matched");
@@ -36,5 +49,4 @@ public class Main {
             System.out.println("Not Matched");
         }
     }
-
 }
